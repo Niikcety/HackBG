@@ -1,0 +1,3 @@
+/home/nikkie/Documents/HackBG/CorrectBrackets/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/nikkie/Documents/HackBG/CorrectBrackets/cmake-build-debug/CMakeFiles/CorrectBrackets.dir
+/home/nikkie/Documents/HackBG/CorrectBrackets/cmake-build-debug/CMakeFiles/edit_cache.dir

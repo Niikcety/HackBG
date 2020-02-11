@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nikkie/Documents/HackBG/RottingApples/Garden.h
+Queue.h
+/home/nikkie/Documents/HackBG/RottingApples/Queue.h
+
+/home/nikkie/Documents/HackBG/RottingApples/Queue.h
+
+/home/nikkie/Documents/HackBG/RottingApples/main.cpp
+iostream
+-
+Queue.h
+/home/nikkie/Documents/HackBG/RottingApples/Queue.h
+Garden.h
+/home/nikkie/Documents/HackBG/RottingApples/Garden.h
+

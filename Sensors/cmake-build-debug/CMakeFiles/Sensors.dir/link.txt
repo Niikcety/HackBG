@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Sensors.dir/main.cpp.o CMakeFiles/Sensors.dir/sensor.cpp.o CMakeFiles/Sensors.dir/sensors.cpp.o  -o Sensors 
