@@ -83,24 +83,25 @@ def get_largest_palindrome(n):
 # Problem 5
 
 def is_it_number(numb):
-	if ord(numb) >= 48 & ord(numb) <= 57:
+	if ord(numb) >= 48 and ord(numb) <= 57:
 		return True
 	return False
 
 def sum_of_numbers(input_string):
 	sum1 = 0
-	lst = ""
+	lst = []
 	for elem in input_string:
 		if is_it_number(elem):
-			lst = ''.join(elem)
+			lst.append(elem)
+			print(int(lst))
 		else:
-			print(lst)
-			sum1 += int(lst)
-			lst = ''
+			
+			#sum1 += int(lst)
+			lst = []
 	return sum1
 
 print(sum_of_numbers("ab125cd3"))
-print(sum_of_numbers("ab12"))
-print(sum_of_numbers("ab"))
-print(sum_of_numbers("1101"))
-print(sum_of_numbers("11110"))
+# print(sum_of_numbers("ab12"))
+# print(sum_of_numbers("ab"))
+# print(sum_of_numbers("1101"))
+# print(sum_of_numbers("11110"))
