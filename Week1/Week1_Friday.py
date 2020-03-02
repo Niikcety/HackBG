@@ -100,6 +100,7 @@ def normalize(m):
 	return m
 
 def number_of_neighbours(i,j,r,c,m):
+	print(m)
 	if i == 0 and j == 0:
 		m[1][0] -= m[i][j]
 		m[1][1] -= m[i][j]
@@ -159,17 +160,16 @@ def number_of_neighbours(i,j,r,c,m):
 		m[i-1][j+1] -= m[i][j]
 		return m
 
-def matrix_bombin_plan(m):
+def matrix_bombin_plan(matrix):
 	dictionary = {}
-	r = len(m)
-	c = len(m[0])
-	sum_matrix = sum_of_matrix(m)
-	for i in range(0,len(m)):
-		for j in range(0,len(m[0])):
-			# print(normalize((number_of_neighbours(i,j,r,c,m))))
-			# print()
+	r = len(matrix)
+	c = len(matrix[0])
+	m = [ele[:] for ele in matrix]
+	sum_matrix = sum_of_matrix(matrix)
+	for i in range(0,r):
+		for j in range(0,c):
 			dictionary[(i,j)] = sum_of_matrix(normalize(number_of_neighbours(i,j,r,c,m)))
-
+			m = [ele[:] for ele in matrix]
 	print(dictionary)
 	
 
