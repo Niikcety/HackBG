@@ -1,12 +1,24 @@
 #Problem 1
 
 def gas_stations(distance, tank_size, stations):
-	pass
+	multiplier = 1
+	lst = [] 
+	nested_list = []
+	for i in stations:
+		if i < tank_size * multiplier:
+			nested_list.append(i)
+		else:
+			lst.append(nested_list)
+			multiplier += 1
+			nested_list = []
+			nested_list.append(i)
+	lst.append(nested_list)
+	lst = [max(i) for i in lst]
+	if max(lst) < distance - tank_size:
+		print("There wouldn't be enough gas to finish the route")
+	else:
+		return lst
 
-
-
-# print(gas_stations(320, 90, [50, 80, 140, 180, 220, 290]))
-# print(gas_stations(390, 80, [70, 90, 140, 210, 240, 280, 350]))
 
 #Problem 2
 
@@ -104,10 +116,34 @@ def sum_of_numbers(input_string):
 		sum1 += int(lst_string)
 	return sum1
 
-print(sum_of_numbers("ab125cd3"))
-print(sum_of_numbers("ab12"))
-print(sum_of_numbers("ab"))
-print(sum_of_numbers("1101"))
-print(sum_of_numbers("11110"))
-print(sum_of_numbers("1abc33xyz22"))
-print(sum_of_numbers("0hfabnek"))
+# print(sum_of_numbers("ab125cd3"))
+# print(sum_of_numbers("ab12"))
+# print(sum_of_numbers("ab"))
+# print(sum_of_numbers("1101"))
+# print(sum_of_numbers("11110"))
+# print(sum_of_numbers("1abc33xyz22"))
+# print(sum_of_numbers("0hfabnek"))
+
+# Problem 6
+def birthday_ranges(birthdays, ranges):
+	numbers = []
+	for i in ranges:
+		(start,end) = i
+		if (start > end) or start <= 0 or start > 365 or end <= 0 or end > 365:
+			print("Number out of scope")
+			return
+		else:
+			sum1 = 0
+			for j in birthdays:
+				if j <= 0 or j > 365:
+					print("Number out of scope")
+					return
+				else:
+					if j >= start and j  <= end:
+						sum1 += 1
+			numbers.append(sum1)
+
+	return numbers
+
+# print(birthday_ranges([-1, 2, 3, 4, 5], [(1, 2), (1, 3), (1, 4), (1, 5), (4, 6)]))
+# print(birthday_ranges([5, 10, 6, 7, 3, 4, 5, 11, 21, 300, 15], [(4, 9), (6, 7), (200, 225), (300, 365)]))
