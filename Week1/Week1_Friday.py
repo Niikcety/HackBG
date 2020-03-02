@@ -79,9 +79,28 @@ def is_it_prime(n):
 	return True
 
 def goldbach(n):
-	pass
+	if(n % 2 != 0):
+		print("Number is even")
+	elif(n <= 2):
+		print("Number smaller than 2")
+	else:
+		list_of_prime = list_of_primes(n)
+		
+		result = []
+		for i in list_of_prime:
+			for j in list_of_prime:
+				if i + j == n:
+					if(j,i) not in result:
+						result.append((i,j)) 
+		return result
 
-# print(list_of_primes(97))
+print(goldbach(3))
+print(goldbach(2))
+print(goldbach(4))
+print(goldbach(6))
+print(goldbach(8))
+print(goldbach(10))
+print(goldbach(100))
 
 # Problem 4
 def sum_of_matrix(m):
@@ -173,16 +192,3 @@ def matrix_bombin_plan(matrix):
 	print(dictionary)
 	
 
-
-#print(number_of_neighbours(0,0,3,3,[[1,2,3],[4,5,6],[7,8,9]]))
-	
-matrix_bombin_plan([[1,2,3],
-					[4,5,6],
-					[7,8,9]])
-
-#[[10,10,10],[10,9,10],[10,10,10]]
-
-# 10 10 10 10
-# 10 10 10 10
-# 10 10 10 10
-# 10 10 10 10
