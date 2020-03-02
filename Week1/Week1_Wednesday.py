@@ -93,15 +93,21 @@ def sum_of_numbers(input_string):
 	for elem in input_string:
 		if is_it_number(elem):
 			lst.append(elem)
-			print(int(lst))
 		else:
-			
-			#sum1 += int(lst)
-			lst = []
+			if lst != []:
+				lst_string = ''.join(lst)
+				sum1 += int(lst_string)
+				lst_string = ''
+				lst = []
+	if lst !=  []:
+		lst_string = ''.join(lst)
+		sum1 += int(lst_string)
 	return sum1
 
 print(sum_of_numbers("ab125cd3"))
-# print(sum_of_numbers("ab12"))
-# print(sum_of_numbers("ab"))
-# print(sum_of_numbers("1101"))
-# print(sum_of_numbers("11110"))
+print(sum_of_numbers("ab12"))
+print(sum_of_numbers("ab"))
+print(sum_of_numbers("1101"))
+print(sum_of_numbers("11110"))
+print(sum_of_numbers("1abc33xyz22"))
+print(sum_of_numbers("0hfabnek"))
