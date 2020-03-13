@@ -1,5 +1,3 @@
-import sys
-
 def the_largest_common_divisor(nominator = 0,denominator = 1):
 	if denominator == 0:
 		raise ValueError('Forbidden division on zero')
