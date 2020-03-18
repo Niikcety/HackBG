@@ -71,27 +71,7 @@ class TestBillBatch(unittest.TestCase):
 
         self.assertTrue(result == 2)
 
-    def test_getitem_with_index_out_of_range_should_raise_index_error(self):
-        lst = [Bill(2), Bill(3)]
-        batch = BillBatch(lst)
-
-        exc = None
-
-        try:
-            batch[2]
-        except IndexError as err:
-            exc = err
-
-        self.assertIsNotNone(exc)
-
-    def test_getitem_with_negative_index(self):
-        lst = [Bill(2), Bill(3), Bill(4)]
-        batch = BillBatch(lst)
-
-        self.assertTrue(batch[-1] == Bill(4),
-                        'Index smaller than -(size of the list)')
-        self.assertTrue(batch[2] == Bill(4))
-
+    
 
 class TestCashDesk(unittest.TestCase):
     def test_take_money_with_element_different_than_batch_and_bill(self):
