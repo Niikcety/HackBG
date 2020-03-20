@@ -101,6 +101,75 @@ class TestPlaylist(unittest.TestCase):
 
 		self.assertTrue({'Someone1': 2, 'Someone2': 1, 'Someone3': 1} == playlist.artists())
 
+				# Case of next_song method
+				# 1 - Repeat = True and Shuffle = False
+				# 2 - Repeat = False and Shuffle = False
+				# 3 - repeat = False and shuffle = True
+				# 4 - repeat = True and shuffle = True
+
+	def test_next_song_in_case_one_with_not_empty_list(self):
+		playlist = Playlist(repeat = True, shuffle = False)
+		playlist.add_song(Song(artist = "Someone1", title = "Something1"))
+		playlist.add_song(Song(artist = "Someone1", title = "Something2"))
+				# first next_song should return first song
+				# second next_song should return third song
+				# third should return first song
+
+				
+		self.assertTrue(playlist.next_song() == Song(artist = "Someone1", title = "Something1"))
+		self.assertTrue(playlist.next_song() == Song(artist = "Someone1", title = "Something2"))
+		self.assertTrue(playlist.next_song() == Song(artist = "Someone1", title = "Something1"))
+
+	def test_next_song_in_case_two_with_not_empty_list(self):
+		playlist = Playlist(repeat = False, shuffle = False)
+		playlist.add_song(Song(artist = "Someone1", title = "Something1"))
+		playlist.add_song(Song(artist = "Someone1", title = "Something2"))
+		exc = None
+				# first next_song should return first song
+				# second next_song should return third song
+				# third should raise error
+
+		self.assertTrue(playlist.next_song() == Song(artist = "Someone1", title = "Something1"))
+		self.assertTrue(playlist.next_song() == Song(artist = "Someone1", title = "Something2"))
+		try:
+			playlist.next_song()
+		except Exception as err:
+			exc = err
+
+		self.assertIsNotNone(exc)
+		
+	def test_next_song_in_case_three_with_not_empty_list(self):
+		playlist = Playlist(repeat = False, shuffle = True)
+		playlist.add_song(Song(artist = "Someone1", title = "Something1"))
+		exc = None
+
+		self.assertTrue(isinstance(playlist.next_song(),Song))
+
+		try:
+			playlist.next_song()
+		except Exception as err:
+			exc = err
+
+		self.assertIsNotNone(exc)
+
+	def test_next_song_in_case_four_with_not_empty_list(self):
+		playlist = Playlist(repeat = True, shuffle = True)
+		playlist.add_song(Song(artist = "Someone1", title = "Something1"))
+		playlist.add_song(Song(artist = "Someone1", title = "Something2"))
+
+				# after two calls length of playlist.not_played_songs should be zero
+				# in the third call length of playlist.not_playes_songs should be 1
+				# because list is coppied and one song is played and removed from the list
+		
+		playlist.next_song()
+		playlist.next_song()
+		
+		self.assertTrue(len(playlist.not_played_songs) == 0)
+
+		playlist.next_song()
+
+		self.assertTrue(len(playlist.not_played_songs) == 1)
+
 
 if __name__ == '__main__':
 	unittest.main()

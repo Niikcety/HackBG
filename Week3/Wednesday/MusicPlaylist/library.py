@@ -1,4 +1,5 @@
 from utils import is_length_valid, length_to_seconds, length_to_minutes, length_to_hours
+import random
 
 class Song:
 	def __init__(self, title = "No title", artist = "No artist", album = "No album", length = "0:0:0"):
@@ -38,15 +39,16 @@ class Playlist:
 			number += 1
 		else:
 			self.name = name
-		self.repeat = True
-		self.shuffle = True
+		self.repeat = repeat
+		self.shuffle = shuffle
 		self.songs = []
-		self.played_songs = []
+		self.not_played_songs = []
 		self.queue = 0
 
 	def add_song(self, song):
 		if isinstance(song, Song):
 			self.songs.append(song)
+			self.not_played_songs.append(song)
 		else:
 			raise Exception('Argument is not instance of the Song class')
 
@@ -92,11 +94,25 @@ class Playlist:
 		if self.repeat == True and self.shuffle == False:
 			if self.queue == len(self.songs) - 1:
 				self.queue = 0
-				return self.songs[self.queue]
+				return self.songs[len(self.songs) - 1]
 			else:
-				return self.song[self.queue]
+				self.queue += 1	
+				return self.songs[self.queue - 1]
 		elif self.repeat == False and self.shuffle == False:
-			return self.song[self.queue]
+			self.queue += 1
+			return self.songs[self.queue - 1]
+		elif self.repeat == False and self.shuffle == True:
+			chosen = random.choice(self.not_played_songs)
+			self.not_played_songs.remove(chosen)
+			return chosen
+		else:
+			if self.not_played_songs == []:
+				self.not_played_songs = self.songs[::]
+			chosen = random.choice(self.not_played_songs)
+			self.not_played_songs.remove(chosen)
+			return chosen
+
+
 
 
 
