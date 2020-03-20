@@ -171,5 +171,8 @@ class TestPlaylist(unittest.TestCase):
 		self.assertTrue(len(playlist.not_played_songs) == 1)
 
 
+
+
+
 if __name__ == '__main__':
 	unittest.main()
