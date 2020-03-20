@@ -4,7 +4,7 @@ import json
 
 
 class Song:
-    def __init__(self, title="No title", artist="No artist", album="No album", length="0:0:0"):
+    def __init__(self, title="Not stated", artist="Not stated", album="Not stated", length="0:0:0"):
         self.title = title
         self.artist = artist
         self.album = album
@@ -35,7 +35,7 @@ class Song:
 
 
 class Playlist:
-    def __init__(self, name=None, repeat=True, shuffle=True):
+    def __init__(self, name=None, repeat=True, shuffle=True, songs=[], not_played_songs=[], queue=0):
         number = 1
 
         if name == None:
@@ -45,9 +45,11 @@ class Playlist:
             self.name = name
         self.repeat = repeat
         self.shuffle = shuffle
-        self.songs = []
-        self.not_played_songs = []
-        self.queue = 0
+        self.songs = songs
+        self.not_played_songs = not_played_songs
+        self.queue = queue
+
+
 
     def add_song(self, song):
         if isinstance(song, Song):
@@ -65,6 +67,9 @@ class Playlist:
     def add_songs(self, songs):
         if not isinstance(songs, list):
             raise Exceptions('Given argument is not a list')
+        elif songs == []:
+        	self.songs = []
+        	self.not_played_songs = []
         else:
             for song in songs:
                 self.add_song(song)
@@ -129,9 +134,21 @@ class Playlist:
         
         splitted_name = self.name.split(' ')
         new_name = '-'.join(splitted_name)
-        
+        new_name += '.json'
+
         with open(new_name,'w') as f:
         	json.dump(self.__dict__, f)
 
+    @classmethod
+    def load(cls, path):
+    	with open(path, 'r') as f:
+    		dicti = json.load(f)
+    	
+    	not_played_songs = []
+    	songs = []
+    	for i in dicti['songs']:
+    		songs.append(Song(i['title'],i['artist'],i['album'],i['length']))
+    	for i in dicti['not_played_songs']:
+    		not_played_songs.append(Song(i['title'],i['artist'],i['album'],i['length']))
 
-
+    	return cls(dicti['name'],dicti['repeat'],dicti['shuffle'],songs,not_played_songs,dicti['queue'])
