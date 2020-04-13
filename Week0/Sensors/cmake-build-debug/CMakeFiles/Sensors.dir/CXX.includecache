@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nikkie/Documents/HackBG/Sensors/main.cpp
+iostream
+-
+sensor.h
+/home/nikkie/Documents/HackBG/Sensors/sensor.h
+sensors.h
+/home/nikkie/Documents/HackBG/Sensors/sensors.h
+
+/home/nikkie/Documents/HackBG/Sensors/sensor.h
+string
+-
+
+/home/nikkie/Documents/HackBG/Sensors/sensors.h
+vector
+-
+sensor.h
+/home/nikkie/Documents/HackBG/Sensors/sensor.h
+

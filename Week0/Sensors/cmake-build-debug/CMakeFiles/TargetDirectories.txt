@@ -1,0 +1,3 @@
+/home/nikkie/Documents/HackBG/Sensors/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/nikkie/Documents/HackBG/Sensors/cmake-build-debug/CMakeFiles/Sensors.dir
+/home/nikkie/Documents/HackBG/Sensors/cmake-build-debug/CMakeFiles/edit_cache.dir
