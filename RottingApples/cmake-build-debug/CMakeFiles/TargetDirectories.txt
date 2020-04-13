@@ -1,3 +1,0 @@
-/home/nikkie/Documents/HackBG/RottingApples/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/nikkie/Documents/HackBG/RottingApples/cmake-build-debug/CMakeFiles/RottingApples.dir
-/home/nikkie/Documents/HackBG/RottingApples/cmake-build-debug/CMakeFiles/edit_cache.dir
