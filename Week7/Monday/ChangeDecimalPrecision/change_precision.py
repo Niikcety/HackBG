@@ -4,7 +4,6 @@ from decimal import *
 
 class change_precision1:
     def __init__(self, precision):
-        # TODO: TEST FOR PRECISION BIGGER THAN 0
         self.precision = precision
 
     def __enter__(self):
@@ -16,7 +15,6 @@ class change_precision1:
 
 @contextmanager
 def change_precision2(precision):
-    # TODO : TEST FOR PRECISION BIGGER THAN 0
     getcontext().prec = precision
 
     yield
