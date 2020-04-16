@@ -34,16 +34,3 @@ def book_reader(path_to_book):
                 yield next(chapter)
             except StopIteration:
                 break
-
-
-book = book_reader('Book')
-print(next(book))
-print(next(book))
-print(next(book))
-print(next(book))
-print(next(book))
-print(next(book))
-print(next(book))
-print(next(book))
-print(next(book))
-print(next(book))
