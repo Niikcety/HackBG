@@ -11,17 +11,21 @@ root = {
     'K': 100}
 
 
-def deep_find_dfs(data, key):
+def deep_apply(func, data):
     for k, v in data.items():
-        if key == k:
-            return v
+        data[func(k)] = data.pop(k)
         if isinstance(v, dict):
-            return deep_find_dfs(v, key)
+            deep_apply(func, v)
         elif isinstance(v, list):
             for neighbour in v:
-                if isinstance(neighbour, dict):
-                    return deep_find_dfs(neighbour, key)
+                if isinstance(v, dict):
+                    deep_apply(func, neighbour)
+    return data
 
 
+def a_adder(key):
+    key += 'A'
+    return key
 
-print(deep_find_dfs(root, 'K'))
+
+print(deep_apply(a_adder, root))
