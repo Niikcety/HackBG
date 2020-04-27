@@ -28,6 +28,38 @@ ALTER TABLE languages
   ADD COLUMN rating INTEGER  CHECK(rating > 0 AND rating < 10);
 
 
+Update languages
+  SET rating = 9
+  WHERE language = "Python" 
+
+Update languages
+  SET rating = 6
+  WHERE language = "Go" 
+
+UPDATE languages
+  SET rating = 8
+  WHERE language = "Java"
+
+UPDATE languages
+  SET rating = 5
+  WHERE language = "Haskell" 
+
+UPDATE languages
+  SET rating = 3
+  WHERE language = "C#" 
+
+UPDATE languages
+  SET rating = 4
+  WHERE language = "Ruby" 
+
+UPDATE languages
+  SET rating = 9
+  WHERE language = "C++" 
+
+UPDATE languages
+  SET rating = 6
+  WHERE language = "JavaScript" 
+
 UPDATE languages
   SET answered = 1
   WHERE language = "Python" or language = "Go";
