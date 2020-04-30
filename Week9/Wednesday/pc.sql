@@ -41,7 +41,12 @@ FROM (SELECT AVG(price) AS price
 	  GROUP BY maker 
 	  HAVING maker = 'B')
 
---
+SELECT maker 
+   FROM (SELECT COUNT(maker) as number, maker 
+   FROM PRODUCT 
+   WHERE TYPE = "PC" 
+   GROUP BY maker) 
+   WHERE NUMBER >= 3; 
 
 SELECT maker 
 FROM (SELECT price, maker 
@@ -53,15 +58,15 @@ FROM (SELECT price, maker
 LIMIT 1
 
 SELECT AVG(hd) 
-       FROM pc 
-       JOIN product  
-       ON product.model = pc.model 
-       WHERE maker = (SELECT maker  
-              FROM pc  
-              JOIN product  
-              ON pc.model = product.model  
-              WHERE maker = (SELECT maker  
-                             FROM printer  
-                             JOIN product  
-                             ON printer.model = product.model)  
-              GROUP BY maker);  
+   FROM pc 
+   JOIN product  
+   ON product.model = pc.model 
+   WHERE maker = (SELECT maker  
+          FROM pc  
+          JOIN product  
+          ON pc.model = product.model  
+          WHERE maker = (SELECT maker  
+                         FROM printer  
+                         JOIN product  
+                         ON printer.model = product.model)  
+          GROUP BY maker);  
